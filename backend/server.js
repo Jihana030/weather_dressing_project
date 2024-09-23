@@ -2,17 +2,26 @@ const express = require('express');
 const cors = require('cors');
 
 const app = express();
-app.use(express.json());
-app.use(cors({
-    origin: 'http://localhost:3000',
-    credentials: true,
-}));
+const port = 3001;
 
-app.post('/api/userData', (req,res)=>{
-    console.log(req.body);
-    res.json('Data received');
-});
+// app.use(express.json());
+// app.use(cors({
+//     origin: 'http://localhost:3000',
+//     credentials: true,
+// }));
 
-app.listen(3001, ()=>{
-    console.log('server start')
+// app.post('/api/userData', (req,res)=>{
+//     console.log(req.body);
+//     res.json('Data received');
+// });
+
+app.get('/', (req,res)=>{
+    db.query('SELECT * FROM table_name', function (err, results, fields){
+        if(err) throw err;
+        res.send(results);
+    })
+})
+
+app.listen(port, ()=>{
+    console.log(`Server is running on port ${port}`);
 });
