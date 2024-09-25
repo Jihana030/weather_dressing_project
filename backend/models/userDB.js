@@ -8,3 +8,12 @@ exports.signUp = (data) =>{
         })
     })
 }
+
+exports.getUser = (userID) => {
+    return new Promise((resolve, reject) => {
+        db.query(`SELECT * FROM user where userID = ?`, userID, (err, result) => {
+            if (err) reject(err);
+            else resolve(result);
+        })
+    })
+}
