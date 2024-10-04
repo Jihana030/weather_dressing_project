@@ -1,0 +1,22 @@
+@font-face {
+    font-family: 'Pretendard';
+	font-weight: 500;
+	font-display: swap;
+	src: local('Pretendard Medium'), url('../src/font/Pretendard-medium.woff');
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-family: 'Pretendard';
+}
+
+:root {
+    --main-white:#fff;
+    --main-black:#222;
+    --ivory:#fff6e3;
+    --naturl:#a68e74;
+    --apricot:#e09132;
+    --fern:#424530;
+}
