@@ -7,16 +7,22 @@
 *{
     margin: 0;
     padding: 0;
+    list-style-type: none;
 }
 html {
     font-family: 'Pretendard';
+}
+
+a {
+    text-decoration: none;
+    color: var(--main-black);
 }
 
 :root {
     --main-white:#fff;
     --main-black:#222;
     --ivory:#fff6e3;
-    --naturl:#a68e74;
+    --natural:#a68e74;
     --apricot:#e09132;
     --fern:#424530;
 }
