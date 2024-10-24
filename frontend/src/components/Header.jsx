@@ -1,6 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
 import Category from "./Category";
+import Weather from "./Weather";
 
 const HeaderStyle = styled.div`
   display: flex;
@@ -60,6 +61,7 @@ const Header = () => {
           <span className="material-symbols-rounded">{ icon }</span>
         </div>
       </WeaderStyle>
+      <Weather></Weather>
       <Category></Category>
     </HeaderStyle>
     )
