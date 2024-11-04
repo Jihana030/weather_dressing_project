@@ -26,41 +26,38 @@ const WeaderStyle = styled.div`
   }
 `;
 const Weather = () => {
-  const API_KEY = process.env.REACT_APP_API_KEY;
   useEffect(() => {
+    const API_KEY = process.env.REACT_APP_API_KEY;
     navigator.geolocation.getCurrentPosition((position) => {
       let lat = position.coords.latitude;
       let lon = position.coords.longitude;
+      const getWeather = async (lat, lon) => {
+        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
+        let res = await fetch(url);
+        let data = await res.json();
+        console.log(data);
+        const weatherId = data.id;
+        const weatherKo = WeatherDescKo[weatherId];
+        const weatherIcon = data.icon;
+        const weatherIconAdrs = `http://openweathermap.org/img/wn/${weatherIcon}@2x.png`;
+        const temp = Math.round(data.temp);
+        const wind = data.speed;
+        return (
+            <WeaderStyle>
+              <div className="weather-area">{weatherKo}</div>
+              <div className="weather-detail">
+                <div className="weather-temp">{temp}</div>
+                <div className="weather-wind">{wind}</div>
+              </div>
+              <div className="weather-icon">
+                <span className="material-symbols-rounded">{weatherIconAdrs}</span>
+              </div>
+            </WeaderStyle>
+        )
+      }
       getWeather(lat, lon);
     });
   }, []);
-
-  const getWeather = async (lat, lon) => {
-    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
-    let res = await fetch(url);
-    let data = await res.json();
-    console.log(data);
-    const weatherId = data.id;
-    const weatherKo = WeatherDescKo[weatherId];
-    const weatherIcon = data.icon;
-    const weatherIconAdrs = `http://openweathermap.org/img/wn/${weatherIcon}@2x.png`;
-    const temp = Math.round(data.temp);
-    const wind = data.speed;
-    return (
-      <div>
-        <WeaderStyle>
-          <div className="weather-area">{weatherKo}</div>
-          <div className="weather-detail">
-            <div className="weather-temp">{temp}</div>
-            <div className="weather-wind">{wind}</div>
-          </div>
-          <div className="weather-icon">
-            <span className="material-symbols-rounded">{weatherIconAdrs}</span>
-          </div>
-        </WeaderStyle>
-      </div>
-    )
-  }
 }
 
 export default Weather;

@@ -10,6 +10,8 @@ const CategoryStyle = styled.div`
     flex-direction: row;
     justify-align: center;
     align-items: center;
+    overflow: hidden;
+    border-radius: 0 0 0 10px;
   }
   li {
     background: var(--natural);
@@ -20,6 +22,10 @@ const CategoryStyle = styled.div`
   }
   li.sel {
     color: var(--main-white);
+  }
+  li:hover {
+    color: var(--main-white);
+    transition: all 0.4s;
   }
 `
 
