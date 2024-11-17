@@ -1,5 +1,5 @@
 import React from "react";
-import styled from 'styled-components';
+import styled from "styled-components";
 import Category from "./Category";
 import Weather from "./Weather";
 
@@ -14,10 +14,17 @@ const HeaderStyle = styled.div`
   position: relative;
 `;
 
-
 const Header = () => {
   const date = new Date();
-  const week = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
+  const week = [
+    "일요일",
+    "월요일",
+    "화요일",
+    "수요일",
+    "목요일",
+    "금요일",
+    "토요일",
+  ];
   const dayOfWeek = week[date.getDay()];
   const today = `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일 ${dayOfWeek}`;
 
@@ -27,7 +34,7 @@ const Header = () => {
       <Weather></Weather>
       <Category></Category>
     </HeaderStyle>
-    )
-}
+  );
+};
 
 export default Header;
